@@ -1,26 +1,42 @@
 var express = require('express')
 var multer = require('multer')
-var upload = multer({dest: 'uploads/'})
-// include body parser for non multipart/form-data
+var bodyParser = require('body-parser')
+
+var storage = multer.diskStorage({
+	destination: function (req, file, cb){
+	cb(null, __dirname + '/uploads')
+	},
+	filename: function (req, file, cb){
+	cb(null, file.originalname)
+	}
+})
+
+var upload = multer({ storage: storage })
 var app = express()
 
-//app.use(multer().array()) use it for every route (not this)
- 
-// create application/x-www-form-urlencoded parser
+var jsonParser = bodyParser.json()
+var urlencodedParser = bodyParser.urlencoded({extended:true}) 
+
 
 app.get('/', (req,res) => {
   	res.sendFile(__dirname + "/form.html")
 })
 
-// POST /login gets urlencoded bodies
+
 app.post('/upload', upload.single('upload'), function (req, res) {
     console.log(req.body.myname)
     console.log(req.file)
     res.send('Hi' + req.body.myname  +  ' uploading, ' + req.file)
 })
 
+app.get('/textform', (req, res) => {
+	res.sendFile(__dirname + "/textform.html")
+})
+
+app.post('/textformUpload', urlencodedParser, function (req, res) {
+	console.log(req.body)
+})
+
 app.listen(3000, () => {
     console.log(`example app listening at localhost${3000}`)
 })
-
- 
