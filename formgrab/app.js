@@ -46,6 +46,21 @@ app.get('/getreq', (req,res) => {
 	res.send(req.query.ice)
 })
 
+app.get('/addcontent', (req, res) => {
+	res.sendFile(__dirname + "/projectform.html")
+})
+
+app.post('/addcontent', upload.single('inputFile'), (req, res) => {
+	console.log(req.body)
+	console.log("Title: " + req.body.inputTitle + " description: " + req.body.inputDescription + " chosen category: " + req.body.inputRadio + " keywords: " + req.body.inputKeyword)
+	var ethlinkTitle = req.body.inputTitle.toLowerCase().split(' ').join('-')
+	var keywordArray = req.body.inputKeyword.split(', ')
+	console.log("assigned etherpad title: " + ethlinkTitle + " keyword array: " + keywordArray)
+	console.log("array entry 1: " + keywordArray[0] + "array entry 2: " + keywordArray[1])
+	console.log(req.file)
+	res.send("file uploaded succesfully")
+})
+
 
 app.listen(3000, () => {
 	console.log(`example app listening at localhost${3000}`)

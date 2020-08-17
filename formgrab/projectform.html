@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form action="/addcontent" method="POST" enctype="multipart/form-data" class="addContentFormStyle">
+
+        <div class="form-group row addcontentrow">
+          <label for="inputTitle" class="col-sm-3 col-form-label addContentLabel">Title</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" id="inputTitle" name="inputTitle" required>
+          </div>
+        </div>
+
+        <div class="form-group row addcontentrow">
+          <label for="inputFile" class="col-sm-3 col-form-label addContentLabel">File Upload</label>
+          <div class="col-sm-9">
+            <input type="file" class="form-control-file" id="inputFile" name="inputFile" required>
+          </div>
+        </div>
+        
+
+        <div class="form-group row addcontentrow">
+          <label for="inputDescription" class="col-sm-3 col-form-label addContentLabel">Description</label>
+          <div class="col-sm-9">
+            <textarea class="form-control" id="inputDescription" rows="5" name="inputDescription" required></textarea>
+          </div>
+        </div>
+
+        <fieldset class="form-group">
+          <div class="row addcontentrow">
+            <legend class="col-form-label col-sm-3 pt-0 addContentLabel">Content Type</legend>
+            <div class="col-sm-9">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inputRadio" id="inputAudio" value="audio" required>
+                <label class="form-check-label" for="inputAudio"> Audio </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inputRadio" id="inputBook" value="book">
+                <label class="form-check-label" for="inputBook"> Book </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inputRadio" id="inputImage" value="image">
+                <label class="form-check-label" for="inputImage"> Image </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inputRadio" id="inputPdf" value="pdf">
+                <label class="form-check-label" for="inputPdf"> PDF </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inputRadio" id="inputVideo" value="video">
+                <label class="form-check-label" for="inputVideo"> Video </label>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="form-group row addcontentrow">
+          <label for="inputKeyword" class="col-sm-3 col-form-label addContentLabel">Keywords</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control addContentKeywordPlaceholder" id="inputKeyword" name="inputKeyword" placeholder="ex. news, uplifting, positivity, journalism">
+          </div>
+        </div>
+
+        <div class="form-group row addcontentsubmitrow">
+          <div class="col-sm-12">
+            <button type="submit" class="addContentSubmit"><span id="addContentSubmitText">Add</span></button>
+          </div>
+        </div>
+      </form>
+
+</body>
+</html>
