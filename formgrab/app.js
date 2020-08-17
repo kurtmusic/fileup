@@ -7,7 +7,7 @@ var app = express()
 var urlencodedParser = bodyParser.urlencoded({ extended: true })
  
 app.get('/', (req,res) => {
-    res.send("Hi there coder")
+  	res.sendFile(__dirname + "/form.html")
 })
 
 // POST /login gets urlencoded bodies
