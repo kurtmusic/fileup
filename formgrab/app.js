@@ -23,7 +23,7 @@ app.get('/', (req,res) => {
 })
 
 
-app.post('/upload', upload.single('upload'), function (req, res) {
+app.post('/upload', upload.single('upload'), (req, res) => {
     console.log(req.body.myname)
     console.log(req.file)
     res.send('Hi' + req.body.myname  +  ' uploading, ' + req.file)
@@ -33,10 +33,21 @@ app.get('/textform', (req, res) => {
 	res.sendFile(__dirname + "/textform.html")
 })
 
-app.post('/textformUpload', urlencodedParser, function (req, res) {
+app.post('/textformUpload', urlencodedParser, (req, res) => {
 	console.log(req.body)
 })
 
-app.listen(3000, () => {
-    console.log(`example app listening at localhost${3000}`)
+app.get('/getform', (req,res) => {
+	res.sendFile(__dirname + "/textform.html")
 })
+
+app.get('/getreq', (req,res) => {
+	console.log(req.query)
+	res.send(req.query.ice)
+})
+
+
+app.listen(3000, () => {
+	console.log(`example app listening at localhost${3000}`)
+})
+
